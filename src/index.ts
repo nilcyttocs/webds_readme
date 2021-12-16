@@ -7,7 +7,7 @@ import { ILauncher } from '@jupyterlab/launcher';
 
 import { readmeIcon } from './icons';
 
-const readmeDoc = 'Synaptics/README';
+const readmeDoc = 'Synaptics/.links/README';
 
 /**
  * Initialization data for the @webds/readme extension.
