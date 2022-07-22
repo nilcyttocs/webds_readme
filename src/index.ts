@@ -14,9 +14,8 @@ namespace Attributes {
   export const caption = "README";
   export const category = "DSDK - Application";
   export const rank = 10;
+  export const link = "Synaptics/_links/README";
 }
-
-const readmeDoc = "Synaptics/_links/README";
 
 /**
  * Initialization data for the @webds/readme extension.
@@ -38,7 +37,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       execute: async () => {
         commands
           .execute("docmanager:open", {
-            path: readmeDoc,
+            path: Attributes.link,
             factory: "Markdown Preview"
           })
           .then((widget) => {
