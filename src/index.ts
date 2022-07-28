@@ -12,7 +12,7 @@ namespace Attributes {
   export const id = "webds_readme_widget";
   export const label = "README";
   export const caption = "README";
-  export const category = "DSDK - Application";
+  export const category = "DSDK - Applications";
   export const rank = 10;
   export const link = "Synaptics/_links/README";
 }
