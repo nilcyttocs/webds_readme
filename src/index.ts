@@ -1,31 +1,30 @@
 import {
   JupyterFrontEnd,
   JupyterFrontEndPlugin
-} from "@jupyterlab/application";
+} from '@jupyterlab/application';
+import { ILauncher } from '@jupyterlab/launcher';
 
-import { ILauncher } from "@jupyterlab/launcher";
-
-import { readmeIcon } from "./icons";
+import { readmeIcon } from './icons';
 
 namespace Attributes {
-  export const command = "webds_readme:open";
-  export const id = "webds_readme_widget";
-  export const label = "README";
-  export const caption = "README";
-  export const category = "DSDK - Documentation";
+  export const command = 'webds_readme:open';
+  export const id = 'webds_readme_widget';
+  export const label = 'README';
+  export const caption = 'README';
+  export const category = 'DSDK - Documentation';
   export const rank = 0;
-  export const link = "Synaptics/_links/README";
+  export const link = 'Synaptics/_links/README';
 }
 
 /**
  * Initialization data for the @webds/readme extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: "@webds/readme:plugin",
+  id: '@webds/readme:plugin',
   autoStart: true,
   requires: [ILauncher],
   activate: (app: JupyterFrontEnd, launcher: ILauncher) => {
-    console.log("JupyterLab extension @webds/readme is activated!");
+    console.log('JupyterLab extension @webds/readme is activated!');
 
     const { commands, shell } = app;
     const command = Attributes.command;
@@ -33,17 +32,17 @@ const plugin: JupyterFrontEndPlugin<void> = {
       label: Attributes.label,
       caption: Attributes.caption,
       icon: (args: { [x: string]: any }) =>
-        args["isLauncher"] ? readmeIcon : undefined,
+        args['isLauncher'] ? readmeIcon : undefined,
       execute: async () => {
         commands
-          .execute("docmanager:open", {
+          .execute('docmanager:open', {
             path: Attributes.link,
-            factory: "Markdown Preview"
+            factory: 'Markdown Preview'
           })
-          .then((widget) => {
+          .then(widget => {
             widget.id = Attributes.id;
             widget.title.closable = true;
-            if (!widget.isAttached) shell.add(widget, "main");
+            if (!widget.isAttached) shell.add(widget, 'main');
             shell.activateById(widget.id);
           });
       }
